@@ -12,18 +12,19 @@ export default function FlashCards(){
             {question: "O React é __", awnser:"Uma biblioteca JavaScript para construção de interfaces"},
             {question: "Componentes devem iniciar com __", awnser:"letra maiúscula"},
             {question: " Podemos colocar __ dentro do JSX", awnser:"expressões"},
-            {question: "O ReactDOM nos ajuda __sjdoishuidhuisahduisahduisahuidhquwieiqfdsufgudsygfuhydguhyfgbuhdsybfuhysutyfgduywgryewruyihgyusdgfurygsuyrgyufdsuygf", awnser:"interagindo com a DOM para colocar componentes React na mesma"},
+            {question: "O ReactDOM nos ajuda __", awnser:"interagindo com a DOM para colocar componentes React na mesma"},
             {question: "Usamos o npm para __", awnser:"gerenciar os pacotes necessários e suas dependências"},
             {question: "Usamos props para __", awnser:"passar diferentes informações para componentes "},
             {question: "Usamos estado (state) para __", awnser:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
         ]
-        function comparador() { 
-            return Math.random() - 0.5; 
-        }
         const[results,SetResults] = React.useState([]);
+
         if(results.length === 0){
             deck.sort(comparador);
         } 
+        function comparador() { 
+            return Math.random() - 0.5; 
+        }
         function addResult(result){
             SetResults([...results, result])
         }
@@ -42,7 +43,7 @@ export default function FlashCards(){
             }
             return "failed"
         }
-        console.log(results);
+        
     return(
         <div className="flashcards-screen">
             <TopBar/>
@@ -53,8 +54,9 @@ export default function FlashCards(){
                 {results.length===deck.length? <FinalMessage type={verifyResults(results)}/>: ""}
                 <span>{results.length}/{deck.length} CONCUÍDOS</span>
                 <div className="icons">
-                {results.map((result)=><img src={generateIcons(result)}/>)}
+                {results.map((result,index)=><img src={generateIcons(result)} key={index}/>)}
                 </div>
+                {results.length===deck.length? <button>REINICIAR RECALL</button>:""}
             </div>
         </div>        
     )

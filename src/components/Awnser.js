@@ -1,4 +1,4 @@
-export default function({text, addResult, SetTurned, SetClassCard}){
+export default function Awnser({text, addResult, SetTurned, SetClassCard}){
     function finalizeQuestion(option){
         addResult(option);
         SetTurned(false);

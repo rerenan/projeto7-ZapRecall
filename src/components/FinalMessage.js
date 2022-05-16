@@ -17,8 +17,7 @@ export default function FinalMessage({type}){
             <img src={sad}/>
             <span>Putz...</span>
             </div>
-            Ainda faltam alguns...
-            Mas não desanime!
+            Ainda faltam alguns...Mas não desanime!
             </>
             }
         </div> 

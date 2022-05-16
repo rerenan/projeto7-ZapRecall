@@ -177,3 +177,8 @@ margin-top: 6px;
    
 
 }
+.footbar button{
+    width: 160px;
+    background-color: #FB6B6B;
+    margin-top: 6px;
+}
