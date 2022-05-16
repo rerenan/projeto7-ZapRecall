@@ -1,12 +1,12 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import WelcomeUser from "./components/WelcomeUser"
-import FlashCards from "./components/FlashCards"
+import FlashCardsScreen from "./components/FlashCardsScreen"
 export default function App(){
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<WelcomeUser/>}/>
-                <Route path="/flashcards" element={<FlashCards/>}/>
+                <Route path="/flashcards" element={<FlashCardsScreen/>}/>
             </Routes>
         </BrowserRouter>
     )
