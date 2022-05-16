@@ -1,5 +1,11 @@
+import React from 'react'
 import TopBar from "./TopBar"
 import Card from "./Card"
+import FinalMessage from './FinalMessage'
+import wrong from "../assets/img/wrong.png"
+import interrogation from "../assets/img/interrogation.png"
+import check from "../assets/img/check.png"
+
 export default function FlashCards(){
         const deck = [
             {question: " O que é JSX? ", awnser:"Uma extensão de linguagem do JavaScript"},
@@ -14,16 +20,41 @@ export default function FlashCards(){
         function comparador() { 
             return Math.random() - 0.5; 
         }
-        deck.sort(comparador); 
-         
+        const[results,SetResults] = React.useState([]);
+        if(results.length === 0){
+            deck.sort(comparador);
+        } 
+        function addResult(result){
+            SetResults([...results, result])
+        }
+        function generateIcons(name){
+            if(name ==="not-remember"){
+                return wrong
+            }
+            if(name === "almost"){
+                return interrogation
+            }
+            return check
+        }
+        function verifyResults(results){
+            if(results.indexOf("not-remember") === -1){
+                return "congrats"
+            }
+            return "failed"
+        }
+        console.log(results);
     return(
         <div className="flashcards-screen">
             <TopBar/>
             <div className="flashcards">
-                {deck.map((card, index)=><Card question={card.question} awnser={card.awnser} index={index+1}/> )}
+                {deck.map((card, index)=><Card question={card.question} awnser={card.awnser} index={index+1} addResult={addResult} generateIcons={generateIcons}/> )}
             </div>
             <div className="footbar">
-                0/4 CONCUÍDOS
+                {results.length===deck.length? <FinalMessage type={verifyResults(results)}/>: ""}
+                <span>{results.length}/{deck.length} CONCUÍDOS</span>
+                <div className="icons">
+                {results.map((result)=><img src={generateIcons(result)}/>)}
+                </div>
             </div>
         </div>        
     )

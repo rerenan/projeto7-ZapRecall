@@ -3,7 +3,7 @@ export default function Question({text, SetTurned}){
     return(
         <>
         <span>{text}</span>
-        <img src={setinha} alt="" onClick={()=> SetTurned("false")}/>
+        <img src={setinha} alt="" onClick={()=> SetTurned("a")}/>
         </>
     )
 }
